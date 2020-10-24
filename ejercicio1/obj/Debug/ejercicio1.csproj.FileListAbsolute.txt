@@ -1,0 +1,7 @@
+C:\Users\Ailu\Documents\GitHub\LabNet2020\ejercicio1\bin\Debug\PracticaPOO_Transportes.exe.config
+C:\Users\Ailu\Documents\GitHub\LabNet2020\ejercicio1\bin\Debug\PracticaPOO_Transportes.exe
+C:\Users\Ailu\Documents\GitHub\LabNet2020\ejercicio1\bin\Debug\PracticaPOO_Transportes.pdb
+C:\Users\Ailu\Documents\GitHub\LabNet2020\ejercicio1\obj\Debug\ejercicio1.csprojAssemblyReference.cache
+C:\Users\Ailu\Documents\GitHub\LabNet2020\ejercicio1\obj\Debug\ejercicio1.csproj.CoreCompileInputs.cache
+C:\Users\Ailu\Documents\GitHub\LabNet2020\ejercicio1\obj\Debug\PracticaPOO_Transportes.exe
+C:\Users\Ailu\Documents\GitHub\LabNet2020\ejercicio1\obj\Debug\PracticaPOO_Transportes.pdb
