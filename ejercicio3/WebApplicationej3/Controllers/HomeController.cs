@@ -2,64 +2,85 @@
 using System;
 using System.Data.SqlClient;
 using System.Web.Mvc;
+using Entities;
+using DataAccess;
+using System.Linq;
 
 namespace WebApplicationej3.Controllers
 {
     public class HomeController : Controller
     {
-        public ActionResult Index()
+        public ActionResult Index(string sortOrder)
         {
-            #region Insert
-            SqlConnection cnn;
-            string connectionString;
-            connectionString = @"data source=(LocalDB)\MSSQLLocalDB;initial catalog=Northwind;integrated security=True;MultipleActiveResultSets=True;App=EntityFramework";
-            cnn = new SqlConnection(connectionString);
-            cnn.Open();
-            SqlCommand command;
-            SqlDataAdapter adapter = new SqlDataAdapter();
-            String sqlInsert = "";
-            sqlInsert = "Insert into Shippers (CompanyName, Phone) values ('New Company Test', '(503) 555-4027')";
-            command = new SqlCommand(sqlInsert, cnn);
-            adapter.InsertCommand = new SqlCommand(sqlInsert, cnn);
-            command.ExecuteNonQuery();
+            //Probé los insert, update y delete con SqlConnection, pasé todo a Logic
+
+            #region Crud Methods
+            Crud crud = new Crud();
+            string sqlInsert = "Insert into Shippers (CompanyName, Phone) values ('New Company Crud Test', '(503) 555-4027')";
+            crud.Insert(sqlInsert);
+            string sqlUpdate = "Update Categories set CategoryName='Update Crud' where CategoryID=3";
+            crud.Update(sqlUpdate);
+            //string sqlDelete = "Delete [Order Details] where OrderID=10251";
+            //crud.Delete(sqlDelete);
             #endregion
 
-            #region Update
-            String sqlUpdate = "";
-            sqlUpdate = "Update Categories set CategoryName='Update Test' where CategoryID=3";
-            command = new SqlCommand(sqlUpdate, cnn);
-            adapter.InsertCommand = new SqlCommand(sqlUpdate, cnn);
-            command.ExecuteNonQuery();
+            #region Insert Method
+            ShippersLogic shippersLogic = new ShippersLogic();
+            shippersLogic.Insert(new Entities.Shippers
+            {
+                CompanyName = "Insert test",
+                Phone = "(555) 54321355"
+            });
+
             #endregion
 
-
-            #region Delete
-            //String sqlDelete = "";
-            //sqlDelete = "Delete [Order Details] where OrderID=10251";
-            //command = new SqlCommand(sqlDelete, cnn);
-            //adapter.InsertCommand = new SqlCommand(sqlDelete, cnn);
-            //command.ExecuteNonQuery();
+            #region Order
+            NorthwindContext northwindContext = new NorthwindContext();
+            ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
+            ViewBag.IDSortParm = sortOrder == "ShipperID" ? "ID_desc" : "ID";
+            var shippers = from s in northwindContext.Shippers
+                           select s;
+            switch (sortOrder)
+            {
+                case "name_desc":
+                    shippers = shippers.OrderByDescending(s => s.CompanyName);
+                    break;
+                case "ID":
+                    shippers = shippers.OrderBy(s => s.ShipperID);
+                    break;
+                default:
+                    shippers = shippers.OrderBy(s => s.CompanyName);
+                    break;
+            }
             #endregion
 
             #region Create objects and ViewBags
             CategoriesLogic categoriesLogic = new CategoriesLogic();
-            var categories = categoriesLogic.Categories();
-            ShippersLogic shippersLogic = new ShippersLogic();
-            var shippers = shippersLogic.Shippers();
+            var categories = categoriesLogic.All();
+            var shipper = shippersLogic.All();
             ProductsLogic productsLogic = new ProductsLogic();
-            var product5 = productsLogic.Product(5);
-            var product10 = productsLogic.Product(10);
-            var product20 = productsLogic.Product(20);
-            var product30 = productsLogic.Product(30);
+            var product5 = productsLogic.One(5);
+            var product10 = productsLogic.One(10);
+            var product20 = productsLogic.One(20);
+            var product30 = productsLogic.One(30);
             ViewBag.Product5 = product5;
             ViewBag.Product10 = product10;
             ViewBag.Product20 = product20;
             ViewBag.Product30 = product30;
             ViewBag.Categories = categories;
-            ViewBag.Shippers = shippers;
-            return View();
+            ViewBag.Shippers = shipper;
+            return View(shippers.ToList());
             #endregion
         }
 
+        [HttpPost]
+        public ActionResult Search(string idp)
+        {
+            ProductsLogic product = new ProductsLogic();
+            Products result = product.One(int.Parse(idp));
+            ViewBag.Result = result;
+            return View();
+
+        }
     }
 }

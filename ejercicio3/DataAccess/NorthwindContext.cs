@@ -1,3 +1,5 @@
+
+
 namespace DataAccess
 {
     using Entities;
@@ -92,5 +94,6 @@ namespace DataAccess
                 .Property(e => e.TerritoryDescription)
                 .IsFixedLength();
         }
+
     }
 }
