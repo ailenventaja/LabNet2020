@@ -1,0 +1,60 @@
+<!doctype html> 
+<html lang=”es”>   
+    <head>
+        <meta charset="utf-8">
+        <meta name="description" content="Página de contacto">
+        <meta name="keywords" content="contacto">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" &amp;gt;>
+        <meta charset=”utf-8″> 
+        <link rel="icon" href="favicon.ico" type="image/x-icon"/>
+        <link rel="stylesheet" href="style.css">
+        <script src="script.js" type="text/javascript"></script>
+        <title>Contacto</title> 
+    </head> 
+    <body> 
+        <body> <br><br>
+            <div id=table><br>                
+                <div class="topnav">
+                    <a  href="index.html">Home</a>
+                    <a href="news.html">News</a>
+                    <a class="active"  href="contact.html">Contact</a>
+                    <a href="about.html">About</a>
+                </div>
+            <div>
+                <h1>Contacto</h1> 
+            </div>
+            <div class="flex-container">
+                <div>         
+                    <img class="image" id="contactimage" src="images/contact.jpg"  alt="Ilustración contacto" >
+                </div>
+                <div id="info"> 
+                    <form id="form1">
+                        <input class="inputs" id="name" type="text" placeholder="Nombre*" required onchange="Color(this)"><br>
+                        <input class="inputs" id="lastname" type="text" placeholder="Apellido*" required onchange="Color(this)"><br>
+                        <input class="inputs" id="emailid" type="text" placeholder="E-mail*" required onchange="Color(this)"></p>                        
+                        <fieldset id="genre">
+                            <legend>
+                                <h3>Género</h3>
+                            </legend>
+                            <div class="wrapper">
+                                <input id="radio1" name="radio" type="radio" value="no-issues">
+                                <label for="radio1">Femenino</label>
+                            </div>
+                            <div class="wrapper">
+                            <input id="radio2" name="radio" type="radio" value="no-focus-styles">
+                            <label for="radio2">Masculino</label>
+                            </div>
+                            <div class="wrapper">
+                            <input id="radio3" name="radio" type="radio" value="html-markup">
+                            <label for="radio3">Otro</label>
+                            </div>
+                        </fieldset><br>
+                    <input class="inputs" type="text" placeholder="Empresa" onchange="Color(this)"><br><br>
+                    </form>
+                    <button class="btn" id="submit" type="submit" form="form1" value="submit" onclick="validateEmail()">Enviar</button><br><br> 
+                    <button class="btn" id="resetbtn" type="reset" form="form1" onclick="clean()" value="resetbtn" >Limpiar</button>
+               </div>
+            </div>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,229 @@
+@import url("https://fonts.googleapis.com/css2?family=Ubuntu+Condensed&family=Varela+Round&display=swap");
+
+body,html {
+  width: auto; 
+  height: auto; 
+  max-width: 100%; 
+  max-height: 100%;
+  font-family: 'Varela Round', sans-serif;
+  font-size: 12px; 
+  background-image: url("images/background.jpg");
+}
+
+#Contenedor {
+  width: 100%;
+  height: 100%;
+  margin: 0 auto;
+}
+    
+body {
+  background-color: #b168ad;
+}
+
+.topnav {
+  background-color: rgb(133, 105, 138);
+  overflow: hidden;
+}
+
+.topnav a {
+  float: left;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+.topnav a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+.topnav a.active {
+  background-color: #b93cc4;
+  color: white;
+}
+
+.flex-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 100%; 
+  height: 100%;
+  position: relative;  
+}
+
+#table{
+  background-color: white;
+  width: 60%;
+  height: 100%;
+  margin: auto;
+  text-align: center;
+  border-collapse:separate;
+  border:solid white 1px;
+  border-radius:20px;
+  -moz-border-radius:6px;
+  box-shadow: 5px 5px 10px rgb(221, 193, 221);  
+}
+
+h1{
+  font-family:'Ubuntu Condensed', sans-serif;
+  font-size: 250%;
+  color: #b168ad;
+  text-align: left;
+  margin-left: 100px;
+  margin-top: 30px;
+}
+
+.image{
+  height: auto;
+  -moz-user-select: none;
+  -khtml-user-select: none;
+  -webkit-user-select: none;
+  -o-user-select: none;
+  user-select: none;
+}
+
+#newsimage{
+  width: 55%;
+  transform: translate(-10%, -15%);   
+}
+
+#aboutimage{
+  width: 60%;  
+}
+
+#map{
+  width: auto;
+  transform: translate(-15%, -25%); 
+}
+
+#mapimage{
+  width: 75%;
+  transform: translate(-5%, -19%); 
+}
+
+#contactimage{  
+  width: 90%;
+  transform: translate(-5%, -5%); 
+  align-items: stretch;
+  object-fit: contain;
+}
+
+#welcomeimage
+{  
+  width: 100%;
+} 
+
+.inputs{
+  border: none;
+  background-color: rgb(209, 162, 209);
+  border-radius:6px;
+  width: 150px;
+  height: 25px;
+  margin-bottom: 10px;
+}
+
+input::placeholder{
+  color: white;
+  padding-left: 5px;
+}
+
+Input:Focus{
+  color: purple;
+  Background-color: white;
+  padding-left: 5px;
+  font-family: 'Varela Round', sans-serif;
+}
+
+.btn{
+  width: 180px;
+  height: 30px;
+  border-radius:20px;
+  border: none;
+  background-color: rgb(197, 125, 197);
+  color: white;
+  font: bold;
+  font-family: 'Varela Round', sans-serif;
+  cursor: pointer;
+}
+
+.btn:hover{
+  background-color: rgb(117, 61, 122);
+}
+
+#info{
+  flex-basis:100%;
+  transform: translate(-40%, -5%); 
+}
+
+.twitter-timeline{
+  transform: translate(-50%, -15%);
+}
+
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+ 
+form{
+  margin: 1rem auto;
+  max-width: 150px;
+}
+
+#genre{
+  transform: translate(3px, -10px);
+}
+.wrapper {
+  position: relative;
+}
+ 
+.wrapper input {
+  height: 10px;
+  left: 0;
+  opacity: 0;
+  position: absolute;
+  top: 0;
+  width: 10px;
+}
+ 
+.wrapper input + label::before {
+  border: 2px solid;
+  content: "";
+  height: 10px;
+  left: 0;
+  position: absolute;
+  top: 0;
+  width: 10px;
+  border-radius: 50%;
+}
+
+.wrapper input + label::after {
+  content: "";
+  opacity: 0;
+  border: 3px solid;
+  border-radius: 50%;
+  position: absolute;
+  left: 4px;
+  top: 4px;
+  transition: opacity 0.2s ease-in-out;
+}
+ 
+.wrapper input:checked + label::after {
+  opacity: 1;
+}
+ 
+.wrapper input:focus + label::before {
+  box-shadow: 0 0 0 3px #db4be0;
+  outline: 3px solid transparent; /* For Windows high contrast mode. */
+}
+
+legend{
+  color: rgb(133, 102, 128);
+}
+
+.wrapper{
+  color: rgb(110, 74, 119);
+}
