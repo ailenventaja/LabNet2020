@@ -130,8 +130,8 @@ input::placeholder{
 }
 
 Input:Focus{
-  color: purple;
-  Background-color: white;
+  color: rgb(255, 255, 255);
+  Background-color: rgb(133, 105, 138);
   padding-left: 5px;
   font-family: 'Varela Round', sans-serif;
 }
