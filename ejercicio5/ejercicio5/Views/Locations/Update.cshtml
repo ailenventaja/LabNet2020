@@ -1,0 +1,14 @@
+﻿@model Entities.LOCATIONS
+@{
+    ViewBag.Title = "Update";
+}
+
+<h2>Update</h2>
+
+@using (Html.BeginForm("Update", "Locations", "id", FormMethod.Post))
+{
+    <div>City: @Html.TextBoxFor(r => r.CITY)</div>
+    <input type="submit" name="Save" value="Save" />
+}
+
+

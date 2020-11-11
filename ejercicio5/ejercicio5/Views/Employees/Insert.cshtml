@@ -1,0 +1,18 @@
+﻿@model Entities.EMPLOYEES
+@{
+    ViewBag.Title = "Insert";
+}
+
+<h2>Insert</h2>
+
+@using (Html.BeginForm("Insert", "Employees", FormMethod.Post))
+{
+    <div>First name: @Html.TextBoxFor(r => r.FIRST_NAME, new {required = "required" })</div>
+    <div>Last name: @Html.TextBoxFor(r => r.LAST_NAME, new { required = "required" })</div>
+    <div>Hire date: @Html.TextBoxFor(r => r.HIRE_DATE, "{0:dd-MM-yyyy}", new { type = "date", required = "required" })</div>
+    <div>Job ID: @Html.TextBoxFor(r => r.JOB_ID)</div>
+    <div>Department ID: @Html.TextBoxFor(r => r.DEPARTMENT_ID)</div>
+    <div>Manager ID: @Html.TextBoxFor(r => r.MANAGER_ID)</div>
+    <div>Salary: @Html.TextBoxFor(r => r.SALARY)</div>
+    <input type="submit" name="Save" value="Save" />
+}

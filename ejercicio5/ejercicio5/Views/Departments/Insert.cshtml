@@ -1,0 +1,15 @@
+﻿@model Entities.DEPARTMENTS
+@{
+    ViewBag.Title = "Insert";
+}
+
+<h2>Insert</h2>
+
+@using (Html.BeginForm("Insert", "Departments", FormMethod.Post))
+{
+    <div>Department ID: @Html.TextBoxFor(r => r.ID, new { required = "required" })</div>
+    <div>Department name: @Html.TextBoxFor(r => r.DEPARTMENT_NAME, new { required = "required" })</div>
+    <div>Location ID: @Html.TextBoxFor(r => r.LOCATION_ID, new { required = "required" })</div>
+    <div>Department description: @Html.TextBoxFor(r => r.DEPARTMENT_DESCRIPTION)</div>
+    <input type="submit" name="Save" value="Save" />
+}

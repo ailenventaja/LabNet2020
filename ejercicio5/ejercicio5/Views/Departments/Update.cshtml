@@ -1,0 +1,17 @@
+﻿@model Entities.DEPARTMENTS
+@{
+    ViewBag.Title = "Update";
+}
+
+<h2>Update</h2>
+
+@using (Html.BeginForm("Update", "Departments", "id", FormMethod.Post))
+{
+    <div>Department name: @Html.TextBoxFor(r => r.DEPARTMENT_NAME)</div>
+    <div>Location ID: @Html.TextBoxFor(r => r.LOCATION_ID)</div>
+    <div>Department description: @Html.TextBoxFor(r => r.DEPARTMENT_DESCRIPTION)</div>
+
+    <input type="submit" name="Save" value="Save" />
+}
+
+
