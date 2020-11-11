@@ -22,9 +22,11 @@ namespace ejercicio5.Controllers
             return View();
         }
 
-        public ActionResult Update()
+        public ActionResult Update(int id)
         {
-            return View();
+            var logic = new LocationsLogic();
+            var location = logic.GetOne(id);
+            return View(location);
         }
 
 
@@ -48,10 +50,10 @@ namespace ejercicio5.Controllers
 
 
         [HttpPost]
-        public ActionResult Update(int id, LOCATIONS location)
+        public ActionResult Update(LOCATIONS location)
         {
             var logic = new LocationsLogic();
-            var locationEntity = logic.GetOne(id);
+            var locationEntity = logic.GetOne(location.ID);
             if (location.CITY != null)
                 locationEntity.CITY = location.CITY;
             logic.Update(locationEntity);

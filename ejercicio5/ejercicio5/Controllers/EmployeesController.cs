@@ -22,11 +22,12 @@ namespace ejercicio5.Controllers
             return View();
         }
 
-        public ActionResult Update()
+        public ActionResult Update(int id)
         {
-            return View();
+            var logic = new EmployeesLogic();
+            var employee = logic.GetOne(id);
+            return View(employee);
         }
-
 
         [HttpPost]
         public ActionResult Insert(EMPLOYEES employee)
@@ -54,10 +55,10 @@ namespace ejercicio5.Controllers
 
 
         [HttpPost]
-        public ActionResult Update(int id, EMPLOYEES employee)
+        public ActionResult Update(EMPLOYEES employee)
         {
                 var logic = new EmployeesLogic();
-                var employeeEntity = logic.GetOne(id);
+                var employeeEntity = logic.GetOne(employee.ID);
             if (employee.FIRST_NAME != null)
                 employeeEntity.FIRST_NAME = employee.FIRST_NAME;
             if (employee.LAST_NAME != null)

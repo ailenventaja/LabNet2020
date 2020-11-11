@@ -23,9 +23,11 @@ namespace ejercicio5.Controllers
             return View();
         }
 
-        public ActionResult Update()
+        public ActionResult Update(int id)
         {
-            return View();
+            var logic = new DepartmentsLogic();
+            var department = logic.GetOne(id);
+            return View(department);
         }
 
 
@@ -51,10 +53,10 @@ namespace ejercicio5.Controllers
 
 
         [HttpPost]
-        public ActionResult Update(int id, DEPARTMENTS department)
+        public ActionResult Update(DEPARTMENTS department)
         {
             var logic = new DepartmentsLogic();
-            var departmentEntity = logic.GetOne(id);
+            var departmentEntity = logic.GetOne(department.ID);
             if (department.DEPARTMENT_NAME != null)
                 departmentEntity.DEPARTMENT_NAME = department.DEPARTMENT_NAME;
             if (department.DEPARTMENT_DESCRIPTION != null)

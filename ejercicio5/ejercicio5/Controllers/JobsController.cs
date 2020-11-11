@@ -21,10 +21,11 @@ namespace ejercicio5.Controllers
         {
             return View();
         }
-
-        public ActionResult Update()
+        public ActionResult Update(string id)
         {
-            return View();
+            var logic = new JobsLogic();
+            var job = logic.GetOne(id);
+            return View(job);
         }
 
 
@@ -48,10 +49,10 @@ namespace ejercicio5.Controllers
 
 
         [HttpPost]
-        public ActionResult Update(string id, JOBS job)
+        public ActionResult Update(JOBS job)
         {
             var logic = new JobsLogic();
-            var jobEntity = logic.GetOne(id);
+            var jobEntity = logic.GetOne(job.ID);
             if (job.JOB_NAME != null)
                 jobEntity.JOB_NAME = job.JOB_NAME;
             logic.Update(jobEntity);
