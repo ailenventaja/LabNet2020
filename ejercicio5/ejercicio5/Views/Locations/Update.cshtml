@@ -16,11 +16,10 @@
     <img src="@Url.Content("~/Content/images/illustrations/leaf-cyan-lg.png")" alt="illustrations" class="bg-shape-6">
 </section>
 <br>
-<br>
-@using (Html.BeginForm("Update", "Locations", "id", FormMethod.Post))
-{
-    <div>City: @Html.TextBoxFor(r => r.CITY)</div>
-    <input class="btn btn-sm btn-primary" type="submit" name="Save" value="Save" />
-}
+<br> @using (Html.BeginForm("Update", "Locations", "id", FormMethod.Post))
+    {
+        <div>City: @Html.TextBoxFor(r => r.CITY)</div>
+        <input style="margin:3px;" class="btn btn-sm btn-primary" type="submit" name="Save" value="Save" />
+    }
 
 

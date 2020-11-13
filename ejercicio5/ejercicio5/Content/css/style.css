@@ -140,10 +140,6 @@ h6, .h6 {
   color: #41228e;
 }
 
-#insert{
-   margin-left: 5px;
-}
-
 body {
   background-color: #fff;
   overflow-x: hidden;
@@ -159,6 +155,14 @@ body {
   color: #fff;
 }
 
+.flex-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
 /* preloader */
 .preloader {
   position: fixed;
