@@ -84,6 +84,8 @@ namespace ejercicio5.Controllers
             if (employee.LAST_NAME != null)
                 employeeEntity.LAST_NAME = employee.LAST_NAME;
             if (employee.HIRE_DATE != null)
+                employeeEntity.HIRE_DATE = employee.HIRE_DATE;
+            if (employee.MANAGER_ID != null)
                 employeeEntity.MANAGER_ID = employee.MANAGER_ID;
             if (employee.SALARY != null)
                 employeeEntity.SALARY = employee.SALARY;

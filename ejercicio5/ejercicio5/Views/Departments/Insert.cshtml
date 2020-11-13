@@ -22,8 +22,9 @@
 {
     <div>Department ID: @Html.TextBoxFor(r => r.ID, new { required = "required" })</div>
     <div>Department name: @Html.TextBoxFor(r => r.DEPARTMENT_NAME, new { required = "required" })</div>
-    <div>Location ID: 
-        <select @Html.TextBoxFor(r => r.LOCATION_ID, new { required = "required" }))>
+    <div>
+        Location ID:
+        <select @Html.TextBoxFor(r => r.LOCATION_ID, new { required = "required" }) )>
             <option> </option>
             <option value="1">1</option>
             <option value="2">2</option>
@@ -32,5 +33,5 @@
     </div>
 
     <div>Department description: @Html.TextBoxFor(r => r.DEPARTMENT_DESCRIPTION)</div>
-    <input type="submit" name="Save" value="Save" />
+    <input class="btn btn-sm btn-primary" type="submit" name="Save" value="Save" />
 }

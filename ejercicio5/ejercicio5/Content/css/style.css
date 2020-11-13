@@ -102,8 +102,8 @@ h6, .h6 {
 }
 
 .btn-sm {
-  font-size: 15px;
-  padding: 10px 30px;
+    font-size: 15px;
+    padding: 10px 30px;
 }
 
 .btn-xs {
@@ -114,6 +114,7 @@ h6, .h6 {
 .btn-primary {
   background: #41228e;
   color: #fff;
+  margin: 2px;
 }
 
 .btn-primary:active {
@@ -137,6 +138,10 @@ h6, .h6 {
 
 .btn-transparent:active, .btn-transparent:hover {
   color: #41228e;
+}
+
+#insert{
+   margin-left: 5px;
 }
 
 body {

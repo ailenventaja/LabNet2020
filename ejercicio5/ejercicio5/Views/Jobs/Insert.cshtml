@@ -21,5 +21,6 @@
 {
     <div>Job ID: @Html.TextBoxFor(r => r.ID, new { required = "required", maxlength = 6 })</div>
     <div>Job name: @Html.TextBoxFor(r => r.JOB_NAME, new { required = "required" })</div>
-    <input type="submit" name="Save" value="Save" />
+
+    <input class="btn btn-sm btn-primary" type="submit" name="Save" value="Save" />
 }
