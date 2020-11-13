@@ -18,9 +18,10 @@ namespace Logic
                 context.DEPARTMENTS.Remove(departmentDelete);
                 context.SaveChanges();
             }
-            catch
+            catch (Exception e)
             {
-                throw new Exception("Ocurrió un error al eliminar el empleado");
+                Log2.save(this, e);
+                throw new Exception("If the error persists, please retry again later.");
             }
         }
 
@@ -30,9 +31,10 @@ namespace Logic
             {
                 return context.DEPARTMENTS.ToList();
             }
-            catch
+            catch (Exception e)
             {
-                throw new Exception("Ocurrió un error al obtener los departamentos");
+                Log2.save(this, e);
+                throw new Exception("If the error persists, please retry again later.");
             }
         }
 
@@ -42,10 +44,12 @@ namespace Logic
             {
                 return context.DEPARTMENTS.First(r => r.ID.Equals(id));
             }
-            catch
+            catch (Exception e)
             {
-                throw new Exception("Ocurrió un error al obtener el departamento");
+                Log2.save(this, e);
+                throw new Exception("If the error persists, please retry again later.");
             }
+
         }
         public DEPARTMENTS Insert(DEPARTMENTS entity)
         {
@@ -55,10 +59,12 @@ namespace Logic
                 context.SaveChanges();
                 return newDepartment;
             }
-            catch
+            catch (Exception e)
             {
-                throw new Exception("Ocurrió un error al insertar el departamento");
+                Log2.save(this, e);
+                throw new Exception("If the error persists, please retry again later.");
             }
+
         }
 
         public void Update(DEPARTMENTS entity)
@@ -71,9 +77,10 @@ namespace Logic
                 departmentsUpdate.DEPARTMENT_DESCRIPTION = entity.DEPARTMENT_DESCRIPTION;
                 context.SaveChanges();
             }
-            catch
+            catch (Exception e)
             {
-                throw new Exception("Ocurrió un error al actualizar el departamento");
+                Log2.save(this, e);
+                throw new Exception("If the error persists, please retry again later.");
             }
         }
     }

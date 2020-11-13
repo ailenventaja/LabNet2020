@@ -4,7 +4,13 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Web;
+using System.IO;
+using log4net;
+using log4net.Repository.Hierarchy;
+using System.Diagnostics;
 using Entities;
+using NLog.Fluent;
 
 namespace Logic
 {
@@ -12,7 +18,7 @@ namespace Logic
     {
         public void Delete(int id)
         {
-            throw new NotImplementedException();
+            
         }
 
         public void Delete(string id)
@@ -23,10 +29,12 @@ namespace Logic
                 context.JOBS.Remove(jobsDelete);
                 context.SaveChanges();
             }
-            catch
+            catch (Exception e)
             {
-                throw new Exception("Ocurrió un error al eliminar el puesto de trabajo");
+                Log2.save(this, e);
+                throw new Exception("If the error persists, please retry again later.");
             }
+            
         }
 
         public List<JOBS> GetAll()
@@ -35,9 +43,10 @@ namespace Logic
             {
                 return context.JOBS.ToList();
             }
-            catch
+            catch (Exception e)
             {
-                throw new Exception("Ocurrió un error al obtener los puestos de trabajo");
+                Log2.save(this, e);
+                throw new Exception("If the error persists, please retry again later.");
             }
         }
 
@@ -47,9 +56,10 @@ namespace Logic
             {
                 return context.JOBS.First(r => r.ID.Equals(id));
             }
-            catch
+            catch (Exception e)
             {
-                throw new Exception("Ocurrió un error al obtener el puesto de trabajo");
+                Log2.save(this, e);
+                throw new Exception("If the error persists, please retry again later.");
             }
         }
 
@@ -61,9 +71,10 @@ namespace Logic
                 context.SaveChanges();
                 return newJob;
             }
-            catch
+            catch (Exception e)
             {
-                throw new Exception("Ocurrió un error al insertar el puesto de trabajo");
+                Log2.save(this, e);
+                throw new Exception("Remember to enter a new ID (character limit: 6). If the error persists, please retry again later.");
             }
 
         }
@@ -76,9 +87,10 @@ namespace Logic
                 jobsUpdate.JOB_NAME = entity.JOB_NAME;
                 context.SaveChanges();
             }
-            catch
+            catch (Exception e)
             {
-                throw new Exception("Ocurrió un error al actualizar los puestos de trabajo");
+                Log2.save(this, e);
+                throw new Exception("If the error persists, please retry again later.");
             }
         }
     }

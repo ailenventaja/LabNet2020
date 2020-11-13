@@ -17,7 +17,6 @@ namespace Entities
 
         [StringLength(6)]
         public string ID { get; set; }
-
         [Required]
         [StringLength(100)]
         public string JOB_NAME { get; set; }

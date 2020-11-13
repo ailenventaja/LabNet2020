@@ -15,6 +15,8 @@ namespace ejercicio5.Controllers
         {
             var logic = new JobsLogic();
             var jobs = logic.GetAll();
+            if ( TempData["Message"] != null)
+                ViewBag.Message = TempData["Message"].ToString();
             return View(jobs);
         }
         public ActionResult Insert()
@@ -36,14 +38,30 @@ namespace ejercicio5.Controllers
             var jobEntity = new JOBS();
             jobEntity.ID = job.ID;
             jobEntity.JOB_NAME = job.JOB_NAME;
-            logic.Insert(jobEntity);
+            try
+            {
+                logic.Insert(jobEntity);
+                TempData["Message"] = "New job added successfully";
+            }
+            catch (Exception e)
+            {
+                TempData["Message"] = $"Error adding new job. {e.Message}";
+            }
             return RedirectToAction("index");
         }
 
         public ActionResult Delete(string id)
         {
             var logic = new JobsLogic();
-            logic.Delete(id);
+            try
+            {
+                logic.Delete(id);
+                TempData["Message"] = "Job deleted successfully";
+            }
+            catch (Exception e)
+            {
+                TempData["Message"] = $"Error deleting job. {e.Message}";
+            }
             return RedirectToAction("index");
         }
 
@@ -55,8 +73,17 @@ namespace ejercicio5.Controllers
             var jobEntity = logic.GetOne(job.ID);
             if (job.JOB_NAME != null)
                 jobEntity.JOB_NAME = job.JOB_NAME;
-            logic.Update(jobEntity);
+            try
+            {
+                logic.Update(jobEntity); 
+                TempData["Message"] = "Job updated successfully";
+            }
+            catch (Exception e)
+            {
+                TempData["Message"] = $"Error updating job. {e.Message}";
+            }
             return RedirectToAction("index");
         }
+
     }
 }

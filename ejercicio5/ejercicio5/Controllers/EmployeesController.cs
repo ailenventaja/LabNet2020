@@ -15,6 +15,8 @@ namespace ejercicio5.Controllers
         {
             var logic = new EmployeesLogic();
             var employees = logic.GetAll();
+            if (TempData["Message"] != null)
+                ViewBag.Message = TempData["Message"].ToString();
             return View(employees);
         }
         public ActionResult Insert()
@@ -41,7 +43,15 @@ namespace ejercicio5.Controllers
             employeeEntity.DEPARTMENT_ID = employee.DEPARTMENT_ID;
             employeeEntity.MANAGER_ID = employee.MANAGER_ID;
             employeeEntity.SALARY = employee.SALARY;
-            logic.Insert(employeeEntity);
+            try
+            {
+                logic.Insert(employeeEntity);
+                TempData["Message"] = "New employee added successfully";
+            }
+            catch (Exception e)
+            {
+                TempData["Message"] = $"Error adding new employee. {e.Message}";
+            }
             return RedirectToAction("index");
         }
 
@@ -49,7 +59,15 @@ namespace ejercicio5.Controllers
         public ActionResult Delete(int id)
         {
             var logic = new EmployeesLogic();
-            logic.Delete(id);
+            try
+            {
+                logic.Delete(id);
+                TempData["Message"] = "Employee deleted successfully";
+            }
+            catch (Exception e)
+            {
+                TempData["Message"] = $"Error deleting employee. {e.Message}";
+            }
             return RedirectToAction("index");
         }
 
@@ -67,7 +85,15 @@ namespace ejercicio5.Controllers
                 employeeEntity.MANAGER_ID = employee.MANAGER_ID;
             if (employee.SALARY != null)
                 employeeEntity.SALARY = employee.SALARY;
-            logic.Update(employeeEntity);
+            try
+            {
+                logic.Update(employeeEntity);
+                TempData["Message"] = "Employee updated successfully";
+            }
+            catch (Exception e)
+            {
+                TempData["Message"] = $"Error updating employee. {e.Message}";
+            }
             return RedirectToAction("index");
         }
     }

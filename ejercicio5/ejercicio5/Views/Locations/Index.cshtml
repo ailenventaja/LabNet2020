@@ -17,6 +17,14 @@
 </section>
 <br>
 <br>
+@if (ViewBag.Message != null)
+{
+    <div id="Message">
+        @ViewBag.Message
+    </div>
+}
+<br>
+
 <table class="table">
     <tr>
         <td>ID</td>

@@ -15,7 +15,16 @@
     <img src="@Url.Content("~/Content/images/illustrations/dots-group-cyan.png")" alt="illustrations" class="bg-shape-5">
     <img src="@Url.Content("~/Content/images/illustrations/leaf-cyan-lg.png")" alt="illustrations" class="bg-shape-6">
 </section>
-<br><br>
+<br>
+<br>
+@if (ViewBag.Message != null)
+{
+    <div id="Message">
+        @ViewBag.Message
+    </div>
+}
+<br>
+
 <table class="table">
     <tr>
         <td>ID</td>

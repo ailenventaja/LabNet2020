@@ -16,6 +16,8 @@ namespace ejercicio5.Controllers
         {
             var logic = new DepartmentsLogic();
             var departments = logic.GetAll();
+            if (TempData["Message"] != null)
+                ViewBag.Message = TempData["Message"].ToString();
             return View(departments);
         }
         public ActionResult Insert()
@@ -40,14 +42,30 @@ namespace ejercicio5.Controllers
             departmentEntity.DEPARTMENT_NAME = department.DEPARTMENT_NAME;
             departmentEntity.DEPARTMENT_DESCRIPTION = department.DEPARTMENT_DESCRIPTION;
             departmentEntity.LOCATION_ID = department.LOCATION_ID; 
-            logic.Insert(departmentEntity);
+            try
+            {
+                logic.Insert(departmentEntity);
+                TempData["Message"] = "New department added successfully";
+            }
+            catch
+            {
+                TempData["Message"] = "Error adding new department";
+            }
             return RedirectToAction("index");
         }
 
         public ActionResult Delete(int id)
         {
             var logic = new DepartmentsLogic();
-            logic.Delete(id);
+            try
+            {
+                logic.Delete(id);
+                TempData["Message"] = "Department deleted successfully";
+            }
+            catch (Exception e)
+            {
+                TempData["Message"] = $"Error deleting department. {e.Message}";
+            }
             return RedirectToAction("index");
         }
 
@@ -61,7 +79,15 @@ namespace ejercicio5.Controllers
                 departmentEntity.DEPARTMENT_NAME = department.DEPARTMENT_NAME;
             if (department.DEPARTMENT_DESCRIPTION != null)
                 departmentEntity.DEPARTMENT_DESCRIPTION = department.DEPARTMENT_DESCRIPTION;
-            logic.Update(departmentEntity);
+            try
+            {
+                logic.Update(departmentEntity);
+                TempData["Message"] = "Department updated successfully";
+            }
+            catch (Exception e)
+            {
+                TempData["Message"] = $"Error updating department. {e.Message}";
+            }
             return RedirectToAction("index");
         }
     }

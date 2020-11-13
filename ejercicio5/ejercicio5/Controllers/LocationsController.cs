@@ -15,6 +15,8 @@ namespace ejercicio5.Controllers
         {
             var logic = new LocationsLogic();
             var locations = logic.GetAll();
+            if (TempData["Message"] != null)
+                ViewBag.Message = TempData["Message"].ToString();
             return View(locations);
         }
         public ActionResult Insert()
@@ -36,7 +38,15 @@ namespace ejercicio5.Controllers
             var logic = new LocationsLogic();
             var locationEntity = new LOCATIONS();
             locationEntity.CITY = location.CITY;
-            logic.Insert(locationEntity);
+            try
+            {
+                logic.Insert(locationEntity);
+                TempData["Message"] = "New location added successfully";
+            }
+            catch (Exception e)
+            {
+                TempData["Message"] = $"Error adding location. {e.Message}";
+            }
             return RedirectToAction("index");
         }
 
@@ -44,7 +54,15 @@ namespace ejercicio5.Controllers
         public ActionResult Delete(int id)
         {
             var logic = new LocationsLogic();
-            logic.Delete(id);
+            try
+            {
+                logic.Delete(id);
+                TempData["Message"] = "Location deleted successfully";
+            }
+            catch (Exception e)
+            {
+                TempData["Message"] = $"Error deleting location. {e.Message}";
+            }
             return RedirectToAction("index");
         }
 
@@ -56,7 +74,15 @@ namespace ejercicio5.Controllers
             var locationEntity = logic.GetOne(location.ID);
             if (location.CITY != null)
                 locationEntity.CITY = location.CITY;
-            logic.Update(locationEntity);
+            try
+            {
+                logic.Update(locationEntity);
+                TempData["Message"] = "Location updated successfully";
+            }
+            catch (Exception e)
+            {
+                TempData["Message"] = $"Error updating location. {e.Message}";
+            }
             return RedirectToAction("index");
         }
     }

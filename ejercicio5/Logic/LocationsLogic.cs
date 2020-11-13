@@ -21,10 +21,12 @@ namespace Logic
                 context.LOCATIONS.Remove(locationsDelete);
                 context.SaveChanges();
             }
-            catch
+            catch (Exception e)
             {
-                throw new Exception("Ocurrió un error al eliminar la ubicación");
+                Log2.save(this, e);
+                throw new Exception("If the error persists, please retry again later.");
             }
+
 
         }
 
@@ -34,10 +36,12 @@ namespace Logic
             {
                 return context.LOCATIONS.ToList();
             }
-            catch
+            catch (Exception e)
             {
-                throw new Exception("Ocurrió un error al obtener las ubicaciones");
+                Log2.save(this, e);
+                throw new Exception("If the error persists, please retry again later.");
             }
+
         }
 
         public LOCATIONS GetOne(int id)
@@ -46,10 +50,12 @@ namespace Logic
             {
                 return context.LOCATIONS.First(r => r.ID.Equals(id));
             }
-            catch
+            catch (Exception e)
             {
-                throw new Exception("Ocurrió un error al obtener la ubicación");
+                Log2.save(this, e);
+                throw new Exception("If the error persists, please retry again later.");
             }
+
         }
 
         public LOCATIONS Insert(LOCATIONS entity)
@@ -65,10 +71,12 @@ namespace Logic
                 context.SaveChanges();
                 return newLocation;
             }
-            catch
+            catch (Exception e)
             {
-                throw new Exception("Ocurrió un error al insertar la ubicación");
+                Log2.save(this, e);
+                throw new Exception("If the error persists, please retry again later.");
             }
+
         }
 
         public void Update(LOCATIONS entity)
@@ -79,10 +87,12 @@ namespace Logic
                 locationUpdate.CITY = entity.CITY;
                 context.SaveChanges();
             }
-            catch
+            catch (Exception e)
             {
-                throw new Exception("Ocurrió un error al actualizar la ubicación");
+                Log2.save(this, e);
+                throw new Exception("If the error persists, please retry again later.");
             }
+
         }
     }
 }

@@ -18,10 +18,12 @@ namespace Logic
                 context.EMPLOYEES.Remove(employeesDelete);
                 context.SaveChanges();
             }
-            catch
+            catch (Exception e)
             {
-                throw new Exception("Ocurrió un error al eliminar el empleado");
+                Log2.save(this, e);
+                throw new Exception("If the error persists, please retry again later.");
             }
+
         }
 
         public List<EMPLOYEES> GetAll()
@@ -30,10 +32,12 @@ namespace Logic
             {
                 return context.EMPLOYEES.ToList();
             }
-            catch
+            catch (Exception e)
             {
-                throw new Exception("Ocurrió un error al obtener los empleados");
+                Log2.save(this, e);
+                throw new Exception("If the error persists, please retry again later.");
             }
+
         }
 
         public EMPLOYEES GetOne(int id)
@@ -42,10 +46,12 @@ namespace Logic
             {
                 return context.EMPLOYEES.First(r => r.ID.Equals(id));
             }
-            catch
+            catch (Exception e)
             {
-                throw new Exception("Ocurrió un error al obtener el empleado");
+                Log2.save(this, e);
+                throw new Exception("If the error persists, please retry again later.");
             }
+
         }
 
         public EMPLOYEES Insert(EMPLOYEES entity)
@@ -61,10 +67,12 @@ namespace Logic
                 context.SaveChanges();
                 return newEmployee;
             }
-            catch
+            catch (Exception e)
             {
-                throw new Exception("Ocurrió un error al insertar el empleado");
+                Log2.save(this, e);
+                throw new Exception("If the error persists, please retry again later.");
             }
+
         }
 
         public void Update(EMPLOYEES entity)
@@ -78,10 +86,12 @@ namespace Logic
                 employeesUpdate.SALARY = entity.SALARY;
                 context.SaveChanges();
             }
-            catch
+            catch (Exception e)
             {
-                throw new Exception("Ocurrió un error al actualizar el empleado");
+                Log2.save(this, e);
+                throw new Exception("If the error persists, please retry again later.");
             }
+
 
         }
     }
