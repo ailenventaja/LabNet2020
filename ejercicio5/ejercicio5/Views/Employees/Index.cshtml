@@ -39,18 +39,18 @@
     </tr>
     @foreach (var employee in Model)
     {
-        <tr>
-            <td>@employee.ID</td>
-            <td>@employee.FIRST_NAME</td>
-            <td>@employee.LAST_NAME</td>
-            <td>@employee.JOB_ID</td>
-            <td>@employee.MANAGER_ID</td>
-            <td>@employee.SALARY</td>
-            <td>@employee.DEPARTMENT_ID</td>
-            <td>@employee.HIRE_DATE</td>
-            <td>@Html.ActionLink("Delete", "Delete", new { id = employee.ID }, new { onclick = "return confirm('Are you sure you want to delete this employee?')" })</td>
-            <td>@Html.ActionLink("Update", "Update", new { id = employee.ID }, "Employees")</td>
-        </tr>
+<tr>
+    <td>@employee.ID</td>
+    <td>@employee.FIRST_NAME</td>
+    <td>@employee.LAST_NAME</td>
+    <td>@employee.JOB_ID</td>
+    <td>@employee.MANAGER_ID</td>
+    <td>@employee.SALARY</td>
+    <td>@employee.DEPARTMENT_ID</td>
+    <td>@employee.HIRE_DATE</td>
+    <td>@Html.ActionLink("Delete", "Delete", new { id = employee.ID }, new { onclick = "return confirm('Are you sure you want to delete this employee?')" })</td>
+    <td>@Html.ActionLink("Update", "Update", new { id = employee.ID }, "Employees")</td>
+</tr>
     }
 </table>
 <div>

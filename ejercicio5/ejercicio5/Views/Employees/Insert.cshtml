@@ -22,9 +22,29 @@
     <div>First name: @Html.TextBoxFor(r => r.FIRST_NAME, new { required = "required" })</div>
     <div>Last name: @Html.TextBoxFor(r => r.LAST_NAME, new { required = "required" })</div>
     <div>Hire date: @Html.TextBoxFor(r => r.HIRE_DATE, "{0:dd-MM-yyyy}", new { type = "date", required = "required" })</div>
-    <div>Job ID: @Html.TextBoxFor(r => r.JOB_ID)</div>
-    <div>Department ID: @Html.TextBoxFor(r => r.DEPARTMENT_ID)</div>
+    <div>Job ID:
+        <select @Html.TextBoxFor(r => r.JOB_ID)>
+            <option> </option>
+            <option value="FQ_GRT">FQ_GRT</option>
+            <option value="FQ_SPV">FQ_SPV</option>
+            <option value="FQ_OPR">FQ_OPR</option>
+            <option value="AD_CTB">AD_CTB</option>
+            <option value="AD_PBC">AD_PBC</option>
+        </select>
+    </div>
+    <div>
+        <select @Html.TextBoxFor(r => r.DEPARTMENT_ID)>
+            <option> </option>
+            <option value="10">10</option>
+            <option value="20">20</option>
+            <option value="30">30</option>
+            <option value="31">31</option>
+            <option value="40">40</option>
+            <option value="50">50</option>
+        </select>
+    </div>
     <div>Manager ID: @Html.TextBoxFor(r => r.MANAGER_ID)</div>
     <div>Salary: @Html.TextBoxFor(r => r.SALARY)</div>
     <input type="submit" name="Save" value="Save" />
 }
+

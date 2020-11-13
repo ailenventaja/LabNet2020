@@ -24,7 +24,7 @@ namespace Logic
             catch (Exception e)
             {
                 Log2.save(this, e);
-                throw new Exception("If the error persists, please retry again later.");
+                throw new Exception("If the error persists, please try again later.");
             }
 
 
@@ -39,7 +39,7 @@ namespace Logic
             catch (Exception e)
             {
                 Log2.save(this, e);
-                throw new Exception("If the error persists, please retry again later.");
+                throw new Exception("If the error persists, please try again later.");
             }
 
         }
@@ -53,7 +53,7 @@ namespace Logic
             catch (Exception e)
             {
                 Log2.save(this, e);
-                throw new Exception("If the error persists, please retry again later.");
+                throw new Exception("If the error persists, please try again later.");
             }
 
         }
@@ -74,7 +74,7 @@ namespace Logic
             catch (Exception e)
             {
                 Log2.save(this, e);
-                throw new Exception("If the error persists, please retry again later.");
+                throw new Exception("If the error persists, please try again later.");
             }
 
         }
@@ -90,7 +90,7 @@ namespace Logic
             catch (Exception e)
             {
                 Log2.save(this, e);
-                throw new Exception("If the error persists, please retry again later.");
+                throw new Exception("If the error persists, please try again later.");
             }
 
         }

@@ -17,6 +17,7 @@ namespace ejercicio5.Controllers
             var employees = logic.GetAll();
             if (TempData["Message"] != null)
                 ViewBag.Message = TempData["Message"].ToString();
+
             return View(employees);
         }
         public ActionResult Insert()
@@ -52,6 +53,7 @@ namespace ejercicio5.Controllers
             {
                 TempData["Message"] = $"Error adding new employee. {e.Message}";
             }
+            
             return RedirectToAction("index");
         }
 
@@ -85,6 +87,10 @@ namespace ejercicio5.Controllers
                 employeeEntity.MANAGER_ID = employee.MANAGER_ID;
             if (employee.SALARY != null)
                 employeeEntity.SALARY = employee.SALARY;
+            if (employee.JOB_ID != null)
+                employeeEntity.JOB_ID = employee.JOB_ID;
+            if (employee.DEPARTMENT_ID != null)
+                employeeEntity.DEPARTMENT_ID = employee.DEPARTMENT_ID;
             try
             {
                 logic.Update(employeeEntity);

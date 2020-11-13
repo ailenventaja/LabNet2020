@@ -22,7 +22,15 @@
 {
     <div>Department ID: @Html.TextBoxFor(r => r.ID, new { required = "required" })</div>
     <div>Department name: @Html.TextBoxFor(r => r.DEPARTMENT_NAME, new { required = "required" })</div>
-    <div>Location ID: @Html.TextBoxFor(r => r.LOCATION_ID, new { required = "required" })</div>
+    <div>Location ID: 
+        <select @Html.TextBoxFor(r => r.LOCATION_ID, new { required = "required" }))>
+            <option> </option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+        </select>
+    </div>
+
     <div>Department description: @Html.TextBoxFor(r => r.DEPARTMENT_DESCRIPTION)</div>
     <input type="submit" name="Save" value="Save" />
 }
