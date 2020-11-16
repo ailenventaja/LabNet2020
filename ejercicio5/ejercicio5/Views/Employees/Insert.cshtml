@@ -1,4 +1,7 @@
 ﻿@model Entities.EMPLOYEES
+@{
+    ViewBag.Title = "Insert";
+}
 <section class="page-title-alt bg-primary position-relative">
     <div class="container">
         <div class="row">
@@ -17,37 +20,47 @@
 </section>
 <br>
 <br>
-@using (Html.BeginForm("Insert", "Employees", FormMethod.Post))
-{
-    <div class="flex-container">
-        <div>First name: @Html.TextBoxFor(r => r.FIRST_NAME, new { required = "required" })</div>
-        <div>Last name: @Html.TextBoxFor(r => r.LAST_NAME, new { required = "required" })</div>
-        <div>Hire date: @Html.TextBoxFor(r => r.HIRE_DATE, "{0:dd-MM-yyyy}", new { type = "date", required = "required" })</div>
-        <div>
-            Job ID:
-            <select @Html.TextBoxFor(r => r.JOB_ID)>
-                <option> </option>
-                <option value="FQ_GRT">FQ_GRT</option>
-                <option value="FQ_SPV">FQ_SPV</option>
-                <option value="FQ_OPR">FQ_OPR</option>
-                <option value="AD_CTB">AD_CTB</option>
-                <option value="AD_PBC">AD_PBC</option>
-            </select>
-        </div>
-        <div>
-            Department ID:
-            <select @Html.TextBoxFor(r => r.DEPARTMENT_ID)>
-                <option> </option>
-                <option value="10">10</option>
-                <option value="20">20</option>
-                <option value="30">30</option>
-                <option value="31">31</option>
-                <option value="40">40</option>
-                <option value="50">50</option>
-            </select>
-        </div>
-        <div>Manager ID: @Html.TextBoxFor(r => r.MANAGER_ID)</div>
-        <div>Salary: @Html.TextBoxFor(r => r.SALARY)</div>
-        <input style="margin:3px;" class="btn btn-sm btn-primary" type="submit" name="Save" value="Save" />
-        </div>
-        }
+<div class="space">
+    <div class="flex-box" style="font-family:Playfair Display; color:#41228e">
+        @using (Html.BeginForm("Insert", "Employees", FormMethod.Post))
+        {
+            <div class="forms">
+                <br><br>
+                <div class="input">@Html.TextBoxFor(r => r.FIRST_NAME, new { required = "required", placeholder = "First name*" })</div>
+                <div class="input">@Html.TextBoxFor(r => r.LAST_NAME, new { required = "required", placeholder = "Last name*" })</div>
+                <div class="input">Hire date:<br> @Html.TextBoxFor(r => r.HIRE_DATE, "{0:dd-MM-yyyy}", new { type = "date", required = "required", placeholder = "Hire date*", style = "width:78%" })</div>
+                <div class="input">
+                    Job ID:
+                    <select style="width:57%" @Html.TextBoxFor(r => r.JOB_ID)>
+                        <option> </option>
+                        <option value="FQ_GRT">FQ_GRT</option>
+                        <option value="FQ_SPV">FQ_SPV</option>
+                        <option value="FQ_OPR">FQ_OPR</option>
+                        <option value="AD_CTB">AD_CTB</option>
+                        <option value="AD_PBC">AD_PBC</option>
+                    </select>
+                </div>
+                <div class="input">
+                    Department ID:
+                    <select style="width:31%" @Html.TextBoxFor(r => r.DEPARTMENT_ID)>
+                        <option> </option>
+                        <option value="10">10</option>
+                        <option value="20">20</option>
+                        <option value="30">30</option>
+                        <option value="31">31</option>
+                        <option value="40">40</option>
+                        <option value="50">50</option>
+                    </select>
+                </div>
+                <div class="input">@Html.TextBoxFor(r => r.MANAGER_ID, new { placeholder = "Manager ID" })</div>
+                <div class="input">@Html.TextBoxFor(r => r.SALARY, new { placeholder = "Salary" })</div>
+
+                <button class="button" type="submit"><span>Save</span></button>
+            </div>}
+
+        <div><img class="illus" src="@Url.Content("~/Content/images/employees.jpg")"></div>
+    </div>
+</div>
+
+
+

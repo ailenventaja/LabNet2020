@@ -117,6 +117,11 @@ h6, .h6 {
   margin: 2px;
 }
 
+#Message {
+   color: #41228e;
+   font-weight:bold;
+   margin-left:3px;
+}
 .btn-primary:active {
   background: #542cb7 !important;
 }

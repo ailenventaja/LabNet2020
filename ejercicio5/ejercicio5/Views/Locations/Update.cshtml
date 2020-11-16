@@ -1,4 +1,7 @@
 ﻿@model Entities.LOCATIONS
+@{
+    ViewBag.Title = "Update";
+}
 <section class="page-title-alt bg-primary position-relative">
     <div class="container">
         <div class="row">
@@ -16,10 +19,17 @@
     <img src="@Url.Content("~/Content/images/illustrations/leaf-cyan-lg.png")" alt="illustrations" class="bg-shape-6">
 </section>
 <br>
-<br> @using (Html.BeginForm("Update", "Locations", "id", FormMethod.Post))
-    {
-        <div>City: @Html.TextBoxFor(r => r.CITY)</div>
-        <input style="margin:3px;" class="btn btn-sm btn-primary" type="submit" name="Save" value="Save" />
-    }
+<br>
+<div class="space">
+    <div class="flex-box" style="font-family:Playfair Display; color:#41228e">
+        @using (Html.BeginForm("Update", "Locations", "id", FormMethod.Post))
+        {<div class="forms">
+                <br><br><br>
+                <div class="input">@Html.TextBoxFor(r => r.CITY, new { required = "required", maxlength = 6, placeholder = "City*" })</div>
+                <button class="button" type="submit"><span>Save</span></button>
+            </div>}
 
+        <div><img class="illus" style="width:30%" src="@Url.Content("~/Content/images/locations.jpg")"></div>
+    </div>
+</div>
 

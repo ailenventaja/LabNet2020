@@ -45,6 +45,7 @@ namespace Logic
 
         public EMPLOYEES GetOne(int id)
         {
+
             try
             {
                 return context.EMPLOYEES.First(r => r.ID.Equals(id));

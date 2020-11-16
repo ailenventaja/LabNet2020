@@ -5,6 +5,8 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
+using System.Web.Http.Filters;
+using ActionFilterAttribute = System.Web.Http.Filters.ActionFilterAttribute;
 
 namespace ejercicio5
 {
@@ -18,4 +20,19 @@ namespace ejercicio5
             BundleConfig.RegisterBundles(BundleTable.Bundles);
         }
     }
+
+    
+public class AllowCrossSiteJsonAttribute : ActionFilterAttribute
+    {
+        public override void OnActionExecuted(HttpActionExecutedContext actionExecutedContext)
+        {
+            if (actionExecutedContext.Response != null)
+                actionExecutedContext.Response.Headers.Add("Access-Control-Allow-Origin", "https://comicvine.gamespot.com/api/volumes/?api_key=707a0baf7a29657d25a71418118389018e376e3d");
+
+            base.OnActionExecuted(actionExecutedContext);
+        }
+    }
+
+ 
+
 }

@@ -1,12 +1,11 @@
-﻿@model Entities.LOCATIONS
-@{
-    ViewBag.Title = "Insert";
+﻿@{
+    ViewBag.Title = "Meet us";
 }
 <section class="page-title-alt bg-primary position-relative">
     <div class="container">
         <div class="row">
             <div class="col-12">
-                <h1 class="text-white font-tertiary">Insert Location</h1>
+                <h1 class="text-white font-tertiary">Meet us</h1>
             </div>
         </div>
     </div>
@@ -20,16 +19,22 @@
 </section>
 <br>
 <br>
-<div class="space">
-    <div class="flex-box" style="font-family:Playfair Display; color:#41228e">
-        @using (Html.BeginForm("Insert", "Locations", FormMethod.Post))
-        {<div class="forms">
-                <br><br><br>
-                <div class="input">@Html.TextBoxFor(r => r.CITY, new { required = "required", maxlength = 6, placeholder = "City*" })</div>
-                <button class="button" type="submit"><span>Save</span></button>
-            </div>}
-
-        <div><img class="illus" style="width:30%" src="@Url.Content("~/Content/images/locations.jpg")"></div>
+<div class="flex">
+    <div class="grid-container">
+        @foreach (var character in Model)
+        {
+            <div class="flex">
+                <div>
+                    <img class="charac" src="@character.Image" />
+                </div>
+                <div class="datos">
+                    <br><h5 id="nombre">@character.Name </h5> <br>
+                    <h6 id="datos">
+                        Gender: @character.Gender <br> Species: @character.Species <br>@if (character.Type != null)
+                        {@character.Type} <br>
+                    </h6>
+                </div>
+            </div>
+        }
     </div>
 </div>
-

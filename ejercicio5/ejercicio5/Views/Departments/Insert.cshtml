@@ -1,4 +1,7 @@
 ﻿@model Entities.DEPARTMENTS
+@{
+    ViewBag.Title = "Insert";
+}
 <section class="page-title-alt bg-primary position-relative">
     <div class="container">
         <div class="row">
@@ -17,21 +20,28 @@
 </section>
 <br>
 <br>
+<div class="space">
+    <div class="flex-box" style="font-family:Playfair Display; color:#41228e">
+        @using (Html.BeginForm("Insert", "Departments", FormMethod.Post))
+        {<div class="forms">
+                <br>
+                <div class="input">@Html.TextBoxFor(r => r.ID, new { required = "required", placeholder = "Department ID*" })</div>
+                <div class="input">@Html.TextBoxFor(r => r.DEPARTMENT_NAME, new { required = "required", placeholder = "Department name*" })</div>
+                <div class="input">
+                    Location ID*:
+                    <select style="width:38%" @Html.TextBoxFor(r => r.LOCATION_ID, new { required = "required" }) )>
+                        <option> </option>
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                    </select>
+                </div>
 
-@using (Html.BeginForm("Insert", "Departments", FormMethod.Post))
-{
-    <div>Department ID: @Html.TextBoxFor(r => r.ID, new { required = "required" })</div>
-    <div>Department name: @Html.TextBoxFor(r => r.DEPARTMENT_NAME, new { required = "required" })</div>
-    <div>
-        Location ID:
-        <select @Html.TextBoxFor(r => r.LOCATION_ID, new { required = "required" }) )>
-            <option> </option>
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-        </select>
+                <div class="input">@Html.TextBoxFor(r => r.DEPARTMENT_DESCRIPTION, new { placeholder = "Department description" })</div>
+
+                <button class="button" type="submit"><span>Save</span></button>
+            </div>}
+
+        <div><img class="illus" style="width:30%" src="@Url.Content("~/Content/images/departments.jpg")"></div>
     </div>
-
-    <div>Department description: @Html.TextBoxFor(r => r.DEPARTMENT_DESCRIPTION)</div>
-    <input style="margin:3px;" class="btn btn-sm btn-primary" type="submit" name="Save" value="Save" />
-}
+</div>

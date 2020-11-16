@@ -32,6 +32,7 @@ namespace ejercicio5
 ));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
+                      "~/Content/css/style2.css",
                       "~/Content/bootstrap.css",
                       "~/Content/plugins/bootstrap/bootstrap.min.css",
                       "~/Content/plugins/slick/slick.css",
